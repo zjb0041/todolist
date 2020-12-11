@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ToDoList — 千峰教育版权所有</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+</head>
+
+<body>
+    <header>
+        <section>
+            <div id="form">
+                <label for="title">ToDoList</label>
+                <input type="text" id="title" placeholder="添加ToDo" />
+            </div>
+        </section>
+    </header>
+    <section>
+        <h2>正在进行 <span id="todocount">0</span></h2>
+        <ol id="todolist" class="demo-box"></ol>
+        <h2>已经完成 <span id="donecount">0</span></h2>
+        <ul id="donelist"></ul>
+    </section>
+    <footer>
+        <p>
+            Copyright &copy; 2020 千峰教育 版权所有
+            <a href="javascript:;">京ICP备15058198号</a>
+        </p>
+        <p class="">
+            您当前的ip地址是：<strong id="ipv4"></strong
+                >，地理位置：<strong id="addr"></strong>
+        </p>
+    </footer>
+    <script type="text/javascript" src="./assets/js/index.js"></script>
+    <script src="assets/js/ajax.js"></script>
+
+
+    <script>
+        const ipv4 = document.querySelector('#ipv4');
+        const addr = document.querySelector('#addr');
+        ajax({
+            url: '/todolist',
+            success(res) {
+                res = JSON.parse(res);
+                console.log(res);
+                ipv4.innerHTML = res.ip;
+                addr.innerHTML = res.country + res.area;
+            }
+        })
+    </script>
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</body>
+
+</html>
